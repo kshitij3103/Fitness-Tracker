@@ -18,24 +18,30 @@ import java.util.List;
 public class UserService {
     private final UserRepository userRepository;
     public UserResponse register(RegisterRequest registerRequest) {
-        User user = new User(
-                null,
-                registerRequest.getEmail(),
-                registerRequest.getPassword(),
-                registerRequest.getFirstName(),
-                registerRequest.getLastName(),
-                Instant
-                .parse("2025-12-08T14:49:41.208Z")
-                .atZone(ZoneOffset.UTC)
-                .toLocalDateTime(),
-                 Instant
-                .parse("2025-12-08T14:49:41.208Z")
-                .atZone(ZoneOffset.UTC)
-                .toLocalDateTime(),
-                List.of(),
-                List.of()
-
-        );
+        User user = User.builder()
+                .email(registerRequest.getEmail())
+                .firstName(registerRequest.getFirstName())
+                .lastName(registerRequest.getLastName())
+                .password(registerRequest.getPassword())
+                .build();
+//        User user = new User(
+//                null,
+//                registerRequest.getEmail(),
+//                registerRequest.getPassword(),
+//                registerRequest.getFirstName(),
+//                registerRequest.getLastName(),
+//                Instant
+//                .parse("2025-12-08T14:49:41.208Z")
+//                .atZone(ZoneOffset.UTC)
+//                .toLocalDateTime(),
+//                 Instant
+//                .parse("2025-12-08T14:49:41.208Z")
+//                .atZone(ZoneOffset.UTC)
+//                .toLocalDateTime(),
+//                List.of(),
+//                List.of()
+//
+//        );
         User savedUser =userRepository.save(user);
 
         return mapToResponse(savedUser);
