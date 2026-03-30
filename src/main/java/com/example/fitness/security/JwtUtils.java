@@ -15,7 +15,7 @@ import java.util.List;
 
 @Component
 public class JwtUtils {
-    private String jwtSecret="YS1zdHJpbmctc2VjcmV0LWF0LWxlYXN0LTI1Ni1iaXRzLWxvbmc=";
+    private String jwtSecret=${JWT_SECRET};
     private int jwtExpirationInMs=172800000;
     public String getJwtFromHeader(HttpServletRequest request) {
         String bearerToken = request.getHeader("Authorization");
