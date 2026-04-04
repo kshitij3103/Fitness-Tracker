@@ -11,7 +11,7 @@ import java.util.Map;
 
 @Service
 public class AiService {
-    @Value("{API KEY}")
+    @Value("${gemini.api.key}")
     private String apiKey;
 
     @Value("https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent")
